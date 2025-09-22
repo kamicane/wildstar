@@ -1,8 +1,14 @@
 {
   "name": "wildstar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "minimal, path-aware, unicode-safe pattern matching with captures",
-  "keywords": ["wildcard", "glob", "star", "matching", "path"],
+  "keywords": [
+    "wildcard",
+    "glob",
+    "star",
+    "matching",
+    "path"
+  ],
   "license": "MIT",
   "author": "Valerio Proietti <kamicane@gmail.com>",
   "bugs": "https://github.com/kamicane/wildstar/issues",
@@ -14,8 +20,14 @@
     "#wildstar/insensitive": "./src/wildstar-insensitive.js"
   },
   "exports": {
-    ".": "./src/wildstar.js",
-    "./insensitive": "./src/wildstar-insensitive.js"
+    ".": {
+      "default": "./src/wildstar.js",
+      "types": "./types/wildstar.d.ts"
+    },
+    "./insensitive": {
+      "default": "./src/wildstar-insensitive.js",
+      "types": "./types/wildstar-insensitive.d.ts"
+    }
   },
   "scripts": {
     "test": "uvu tests",
@@ -23,7 +35,7 @@
     "build-api": "jsdoc2md --name-format --module-index-format grouped --files ./src/wildstar.js ./src/wildstar-insensitive.js > API.md"
   },
   "engines": {
-    "node": ">= 22.2.0"
+    "node": ">= 20"
   },
   "devDependencies": {
     "docdash": "^2.0.2",

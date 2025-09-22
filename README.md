@@ -1,4 +1,4 @@
-# wildstar
+# 💫 wildstar
 
 A minimal, path-aware, platform-unaware, unicode-safe pattern matching library for node.js. Supports captures and replacements.
 

@@ -413,7 +413,7 @@ export function replace (repl, captures) {
 	return result
 }
 
-export default {
+const wildstar = {
 	root,
 	join,
 	leaf,
@@ -427,3 +427,5 @@ export default {
 	compareBasic,
 	compare: compareBasic
 }
+
+export default wildstar
