@@ -89,7 +89,7 @@ A platform-unaware path implementation treats all paths the same way, no matter 
 
 **Note:** You can import `wildstar` and `wildstar/insensitive`. Both export the same API, but `/insensitive` versions perform all operations case-insensitively.
 
-See [API docs](API.md) for full documentation.
+See [API docs](API.md) for full documentation, or [read online](https://kamicane.github.io/wildstar/).
 
 ## License
 
