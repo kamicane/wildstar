@@ -338,7 +338,7 @@ Returns captures if the pattern matches the source string (case-insensitive), ot
 
 **Example**  
 ```js
-imatch('Foo Bar', 'foo *') // returns ['Bar']
+match('Foo Bar', 'foo *') // returns ['Bar']
 ```
 <a name="module_wildstar/insensitive.matches"></a>
 

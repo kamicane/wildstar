@@ -26,7 +26,7 @@ export function remap(source: string, pattern: string, replacement: string): str
  * @param {string} pattern - The pattern string, may contain * and *+ wildcards.
  * @returns {string[] | null} Array of captures if matched, or null if not.
  * @example
- * imatch('Foo Bar', 'foo *') // returns ['Bar']
+ * match('Foo Bar', 'foo *') // returns ['Bar']
  */
 export function match(source: string, pattern: string): string[] | null;
 /**

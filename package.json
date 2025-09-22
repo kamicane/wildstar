@@ -31,8 +31,10 @@
   },
   "scripts": {
     "test": "uvu tests",
+    "build-types": "tsc",
     "build-docs": "jsdoc -c jsdoc.json",
-    "build-api": "jsdoc2md --name-format --module-index-format grouped --files ./src/wildstar.js ./src/wildstar-insensitive.js > API.md"
+    "build-api": "jsdoc2md --name-format --module-index-format grouped --files ./src/wildstar.js ./src/wildstar-insensitive.js > API.md",
+    "build-all": "npm run build-types && npm run build-docs && npm run build-api"
   },
   "engines": {
     "node": ">= 20"
@@ -43,6 +45,7 @@
     "jsdoc": "^4.0.4",
     "jsdoc-to-markdown": "^9.1.2",
     "neostandard": "^0.12.2",
+    "typescript": "^5.9.2",
     "uvu": "^0.5.6"
   }
 }
