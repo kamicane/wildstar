@@ -1,6 +1,6 @@
 {
   "name": "wildstar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "minimal, path-aware, unicode-safe pattern matching with captures",
   "keywords": [
     "wildcard",
