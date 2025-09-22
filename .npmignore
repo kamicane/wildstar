@@ -1,3 +1,7 @@
 _*
 docs
 tests
+.editorconfig
+eslint.config.js
+jsdoc.json
+tsconfig.json
