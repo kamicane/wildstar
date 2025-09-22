@@ -1,0 +1,36 @@
+{
+  "name": "wildstar",
+  "version": "0.0.0",
+  "description": "minimal, path-aware, unicode-safe pattern matching with captures",
+  "keywords": ["wildcard", "glob", "star", "matching", "path"],
+  "license": "MIT",
+  "author": "Valerio Proietti <kamicane@gmail.com>",
+  "bugs": "https://github.com/kamicane/wildstar/issues",
+  "homepage": "https://kamicane.github.io/wildstar",
+  "repository": "github:kamicane/wildstar",
+  "type": "module",
+  "imports": {
+    "#wildstar": "./src/wildstar.js",
+    "#wildstar/insensitive": "./src/wildstar-insensitive.js"
+  },
+  "exports": {
+    ".": "./src/wildstar.js",
+    "./insensitive": "./src/wildstar-insensitive.js"
+  },
+  "scripts": {
+    "test": "uvu tests",
+    "build-docs": "jsdoc -c jsdoc.json",
+    "build-api": "jsdoc2md --name-format --module-index-format grouped --files ./src/wildstar.js ./src/wildstar-insensitive.js > API.md"
+  },
+  "engines": {
+    "node": ">= 22.2.0"
+  },
+  "devDependencies": {
+    "docdash": "^2.0.2",
+    "eslint": "^9.36.0",
+    "jsdoc": "^4.0.4",
+    "jsdoc-to-markdown": "^9.1.2",
+    "neostandard": "^0.12.2",
+    "uvu": "^0.5.6"
+  }
+}

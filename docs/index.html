@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-wildstar.html">wildstar</a><ul class='methods'><li data-type='method'><a href="module-wildstar.html#.join">join</a></li><li data-type='method'><a href="module-wildstar.html#.leaf">leaf</a></li><li data-type='method'><a href="module-wildstar.html#.match">match</a></li><li data-type='method'><a href="module-wildstar.html#.matches">matches</a></li><li data-type='method'><a href="module-wildstar.html#.normalize">normalize</a></li><li data-type='method'><a href="module-wildstar.html#.parent">parent</a></li><li data-type='method'><a href="module-wildstar.html#.relative">relative</a></li><li data-type='method'><a href="module-wildstar.html#.remap">remap</a></li><li data-type='method'><a href="module-wildstar.html#.replace">replace</a></li><li data-type='method'><a href="module-wildstar.html#.root">root</a></li></ul></li><li><a href="module-wildstar_insensitive.html">wildstar/insensitive</a><ul class='methods'><li data-type='method'><a href="module-wildstar_insensitive.html#.compareInsensitive">compareInsensitive</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.match">match</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.matches">matches</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.relative">relative</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.remap">remap</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>wildstar</h1>
+<p>A minimal, path-aware, unicode-safe pattern matching library for node.js. Supports captures and replacements.</p>
+<h2>Features</h2>
+<ul>
+<li>Wildcard matching with <code>*</code> (zero or more) and <code>*+</code> (one or more)</li>
+<li><code>**</code> and <code>**+</code> wildcards for matching across path segments</li>
+<li>Each wildcard captures results</li>
+<li>Unicode-safe (works with code points, not just code units)</li>
+</ul>
+<h2>Installation</h2>
+<pre class="prettyprint source lang-sh"><code>npm install wildstar
+</code></pre>
+<h2>Pattern Syntax</h2>
+<ul>
+<li><code>*</code> matches zero or more characters within a single path segment (does not cross path boundaries)</li>
+<li><code>*+</code> matches one or more characters within a single path segment (does not cross path boundaries)</li>
+<li><code>**</code> matches zero or more entire path segments (crosses path boundaries)</li>
+<li><code>**+</code> matches one or more entire path segments (crosses path boundaries)</li>
+</ul>
+<h2>Usage</h2>
+<pre class="prettyprint source lang-js"><code>import wildstar from 'wildstar'
+import wsi from 'wildstar/insensitive' // for case insensitive comparison functions
+// or
+// import { match, matches, replace, remap } from 'wildstar'
+// and / or
+// import { match, matches, replace, remap } from 'wildstar/insensitive'
+
+// Bool matching
+wildstar.matches('hello world', 'h*o w*d') // true
+
+// Capture
+wildstar.match('foo bar', 'foo *') // ['bar']
+
+// Replace
+wildstar.replace('baz &lt;1>', ['bar']) // 'baz bar'
+
+// Remap (match + replace)
+wildstar.remap('foo bar', 'foo *', 'baz &lt;1>') // 'baz bar'
+
+// Always greedy
+wildstar.match('aaa', '*a') // ['aa']
+
+// Path matching
+wildstar.match('foo/bar/baz.txt', 'foo/*/*.txt') // ['bar', 'baz']
+wildstar.match('foo/bar/baz.txt', '**/*.txt') // ['foo/bar', 'baz']
+wildstar.match('foo/bar/baz.txt', 'foo/**/baz.txt') // ['bar']
+
+wildstar.match('foo/bar/baz.txt', 'foo/**') // ['bar/baz.txt']
+
+wildstar.match('foo', 'foo/**') // ['']
+wildstar.match('foo', 'foo/**+') // null
+
+wildstar.match('foo', '**/foo') // ['']
+wildstar.match('foo', '**+/foo') // null
+</code></pre>
+<h3>Notes</h3>
+<ul>
+<li>Each <code>*</code>, <code>**</code>, <code>*+</code> and <code>**+</code> will fill a capture slot, even if empty</li>
+<li>Wildstar does not consider trailing slashes</li>
+<li>Subpath captures always use <code>/</code> as separator</li>
+<li>Unlike glob, <code>folder/**</code> matches both <code>folder</code> and <code>folder/anything</code></li>
+<li>Unlike glob, <code>**/folder</code> matches both <code>folder</code> and <code>anything/folder</code></li>
+<li>Path handling is entirely cross platform. Paths like <code>c:/foo/bar</code> and <code>/foo/bar</code> are always considered absolute</li>
+<li><code>**</code> and <code>**+</code> are only considered when a full path segment is exactly <code>**</code> or <code>**+</code></li>
+<li>Matches are greedy: each wildcard will match as much as possible while still allowing the overall pattern to match</li>
+</ul>
+<h2>API</h2>
+<blockquote>
+<p><strong>Note:</strong> You can import <code>wildstar</code> and <code>wildstar/insensitive</code>. Both export the same API, but <code>/insensitive</code> versions perform all operations case-insensitively.</p>
+</blockquote>
+<p>See <a href="/docs">documentation</a></p>
+<h2>License</h2>
+<p>MIT</p></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Sep 22 2025 18:07:37 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
