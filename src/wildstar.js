@@ -4,7 +4,7 @@
  */
 
 /**
- * @typedef {number} CodePoint - a number representing an Unicode code point
+ * @typedef {number} CodePoint - a number representing a Unicode code point
  */
 
 /**
@@ -17,6 +17,12 @@ const PLUS = 0x2B // '+'
 const CAP_START = 0x3C // '<'
 const CAP_END = 0x3E // '>'
 
+/**
+ * Converts a string to an array of Unicode code points, normalizing wildcard sequences
+ * @private
+ * @param {string} string - The input string to convert
+ * @returns {CodePoint[]} Array of Unicode code points
+ */
 function toCodePoints (string) {
 	if (string == null) return []
 
@@ -25,17 +31,16 @@ function toCodePoints (string) {
 }
 
 /**
- * Compares two Unicode code points for strict equality
- * This is a simple function that returns a == b, used for internal logistics
+ * Internal recursive function for pattern matching with wildcard support
  * @private
- * @param {CodePoint} codePointA - First code point
- * @param {CodePoint} codePointB - Second code point
- * @returns {boolean} True if code points are equal
+ * @param {string[]|null} captures - Array to collect captures, or null if not capturing
+ * @param {CharCompare} charCompare - Function to compare characters
+ * @param {CodePoint[]} sourceCodePoints - Source string as code points
+ * @param {number} sourceIndex - Current position in source
+ * @param {CodePoint[]} patternCodePoints - Pattern string as code points
+ * @param {number} patternIndex - Current position in pattern
+ * @returns {boolean} True if pattern matches from current positions
  */
-export function compare (codePointA, codePointB) {
-	return codePointA === codePointB
-}
-
 function matchInternal (captures, charCompare, sourceCodePoints, sourceIndex, patternCodePoints, patternIndex) {
 	if (patternIndex >= patternCodePoints.length) {
 		return sourceIndex >= sourceCodePoints.length
@@ -131,7 +136,7 @@ export function matches (source, pattern, charCompare = compare) {
  * @param {string} repl - The replacement string, may contain <1>, <2>, ... for captures
  * @param {string[]} captures - Array of captured substrings
  * @returns {string} The replaced string
- * @throws {Error} If the replacement pattern is invalid or references a missing capture
+ * @throws {SyntaxError} If the replacement pattern is invalid or references a missing capture
  * @example
  * replace('foo <1>', ['baz']) // returns 'foo baz'
  */
@@ -187,6 +192,17 @@ export function remap (source, pattern, replacement, charCompare = compare) {
 	const matchResult = match(source, pattern, charCompare)
 	if (!matchResult) return null
 	return replace(replacement, matchResult)
+}
+
+/**
+ * Compares two Unicode code points for strict equality
+ * This is a simple function that returns a == b, used for internal logistics
+ * @param {CodePoint} codePointA - First code point
+ * @param {CodePoint} codePointB - Second code point
+ * @returns {boolean} True if code points are equal
+ */
+export function compare (codePointA, codePointB) {
+	return codePointA === codePointB
 }
 
 const wildstar = {

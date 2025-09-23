@@ -3,6 +3,8 @@
  * @module wildstar/insensitive
  */
 
+/** @typedef {import('./wildstar.js').CodePoint} CodePoint */
+
 import {
 	match as _match,
 	matches as _matches,
@@ -11,23 +13,6 @@ import {
 } from './wildstar.js'
 
 export { replace } from './wildstar.js'
-
-/**
- * Compares two Unicode code points for case-insensitive equality (locale-unaware)
- * @private
- * @param {CodePoint} codePointA - First code point
- * @param {CodePoint} codePointB - Second code point
- * @returns {boolean} True if code points are equal ignoring case (using toLowerCase)
- * @example
- * compare('A'.codePointAt(0), 'a'.codePointAt(0)) // returns true
- * matches('Hello', 'h*o', compare) // returns true
- */
-export function compare (codePointA, codePointB) {
-	return (
-		String.fromCodePoint(codePointA).toLowerCase() ===
-		String.fromCodePoint(codePointB).toLowerCase()
-	)
-}
 
 /**
  * Case-insensitive version of {@link module:wildstar.match}
@@ -45,9 +30,9 @@ export function match (source, pattern) {
 /**
  * Case-insensitive version of {@link module:wildstar.matches}
  * Checks if a string matches a pattern with wildcards (case-insensitive), without returning captures
- * @param {string} source - The input string to match.
- * @param {string} pattern - The pattern string, may contain * and *+ wildcards.
- * @returns {boolean} True if the pattern matches, false otherwise.
+ * @param {string} source - The input string to match
+ * @param {string} pattern - The pattern string, may contain * and *+ wildcards
+ * @returns {boolean} True if the pattern matches, false otherwise
  * @example
  * matches('Hello', 'hell*') // returns true
  */
@@ -67,6 +52,22 @@ export function matches (source, pattern) {
  */
 export function remap (source, pattern, replacement) {
 	return _remap(source, pattern, replacement, compare)
+}
+
+/**
+ * Compares two Unicode code points for case-insensitive equality (locale-unaware)
+ * @param {CodePoint} codePointA - First code point
+ * @param {CodePoint} codePointB - Second code point
+ * @returns {boolean} True if code points are equal ignoring case (using toLowerCase)
+ * @example
+ * compare('A'.codePointAt(0), 'a'.codePointAt(0)) // returns true
+ * matches('Hello', 'h*o', compare) // returns true
+ */
+export function compare (codePointA, codePointB) {
+	return (
+		String.fromCodePoint(codePointA).toLowerCase() ===
+		String.fromCodePoint(codePointB).toLowerCase()
+	)
 }
 
 const wildstar = {

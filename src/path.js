@@ -3,9 +3,11 @@
  * @module wildstar/path
  */
 
-/** @typedef {string} Path - a string potentially representing a path, using `/` and/or `\\` as separators */
+/**
+ * @typedef {import('./wildstar.js').CharCompare} CharCompare
+*/
 
-/** @typedef {import('./wildstar.js').CharCompare} CharCompare */
+/** @typedef {string} Path - a string potentially representing a path, using `/` and/or `\\` as separators */
 
 import os from 'node:os'
 
@@ -18,10 +20,22 @@ const POSIX_SEP = '/'
 const STAR_STAR = '**'
 const STAR_STAR_PLUS = '**+'
 
+/**
+ * Checks if a path part is a multi-star wildcard (** or **+)
+ * @private
+ * @param {string} part - The path part to check
+ * @returns {boolean} True if the part is ** or **+
+ */
 function isMultiStar (part) {
 	return part === STAR_STAR || part === STAR_STAR_PLUS
 }
 
+/**
+ * Checks if path parts represent an absolute path and returns the root
+ * @private
+ * @param {string[]} parts - The path parts array
+ * @returns {string|null} The root if absolute, null otherwise
+ */
 function absolute (parts) {
 	if (parts.length === 0) return null
 	if (parts.at(0).length === 0) return POSIX_SEP
@@ -29,6 +43,12 @@ function absolute (parts) {
 	return null
 }
 
+/**
+ * Appends a path part to the parts array, handling . and .. resolution
+ * @private
+ * @param {string[]} parts - The path parts array to modify
+ * @param {string} part - The part to append
+ */
 function appendPart (parts, part) {
 	if (parts.length === 0 && part.length === 0) {
 		parts.push(part)
@@ -55,6 +75,12 @@ function appendPart (parts, part) {
 	parts.push(part)
 }
 
+/**
+ * Converts a path string to normalized path parts array
+ * @private
+ * @param {string} string - The path string to convert
+ * @returns {string[]} Array of normalized path parts
+ */
 function toParts (string) {
 	if (string == null) return []
 
@@ -69,6 +95,15 @@ function toParts (string) {
 	return segments
 }
 
+/**
+ * Internal recursive function for path pattern matching with wildcard support
+ * @private
+ * @param {string[]|null} captures - Array to collect captures, or null if not capturing
+ * @param {CharCompare} charCompare - Function to compare characters
+ * @param {string[]} source - Source path parts array
+ * @param {string[]} pattern - Pattern path parts array
+ * @returns {boolean} True if pattern matches from current positions
+ */
 function matchPartsInternal (captures, charCompare, source, pattern) {
 	if (pattern.length === 0) return source.length === 0
 
@@ -154,6 +189,12 @@ export function remap (source, pattern, replacement, charCompare) {
 	return normalize(replace(replacement, matchResult))
 }
 
+/**
+ * Converts path parts array back to a path string
+ * @private
+ * @param {string[]} parts - The path parts array
+ * @returns {string} The path string
+ */
 function stringify (parts) {
 	if (parts.length === 1) {
 		const abs = absolute(parts)
@@ -163,9 +204,9 @@ function stringify (parts) {
 }
 
 /**
- * Normalizes a path-like string to wildstar's canonical form
- * @param {string} source - The input path string to normalize
- * @returns {Path} The normalized path string, using `/` as separator
+ * Normalizes a path to wildstar's canonical form
+ * @param {Path} source - The input path to normalize
+ * @returns {Path} The normalized path, using `/` as separator
  * @example
  * normalize('foo//bar/../baz/./') // 'foo/baz'
  * normalize('~\\foo/') // 'c:/Users/kamicane/foo'
