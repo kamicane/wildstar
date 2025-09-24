@@ -15,27 +15,21 @@
   "homepage": "https://kamicane.github.io/wildstar",
   "repository": "github:kamicane/wildstar",
   "type": "module",
-  "imports": {
-    "#wildstar": "./src/wildstar.ts",
-    "#wildstar/insensitive": "./src/wildstar-insensitive.ts",
-    "#wildstar/path": "./src/path.ts",
-    "#wildstar/path/insensitive": "./src/path-insensitive.ts"
-  },
   "exports": {
     ".": {
-      "default": "./dst/wildstar.js",
+      "import": "./dst/wildstar.js",
       "types": "./dst/wildstar.d.ts"
     },
     "./insensitive": {
-      "default": "./dst/wildstar-insensitive.js",
+      "import": "./dst/wildstar-insensitive.js",
       "types": "./dst/wildstar-insensitive.d.ts"
     },
     "./path": {
-      "default": "./dst/path.js",
+      "import": "./dst/path.js",
       "types": "./dst/path.d.ts"
     },
     "./path/insensitive": {
-      "default": "./dst/path-insensitive.js",
+      "import": "./dst/path-insensitive.js",
       "types": "./dst/path-insensitive.d.ts"
     }
   },

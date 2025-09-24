@@ -1,6 +1,5 @@
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
-import n from 'eslint-plugin-n'
 
 export default [
 	{
@@ -9,7 +8,6 @@ export default [
 			'**/node_modules/**'
 		]
 	},
-	n.configs['flat/recommended-module'],
 	...tseslint.configs.strict,
 	...tseslint.configs.stylistic,
 	stylistic.configs.recommended,
@@ -20,9 +18,6 @@ export default [
 		rules: {
 			'curly': 'off',
 			'no-unused-vars': ['off'],
-			'n/no-unpublished-import': ['error', { allowModules: ['uvu', 'tsdoc-markdown'] }],
-			'n/prefer-node-protocol': ['error'],
-			'n/hashbang': 'off',
 			'object-shorthand': 'off',
 
 			'@typescript-eslint/no-unused-vars': ['error'],

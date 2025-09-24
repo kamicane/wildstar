@@ -5,8 +5,8 @@
 
 import os from 'node:os'
 
-import { replace as _replace, match as _match, matches as _matches } from '#wildstar'
-import type { CharCompare } from '#wildstar'
+import { replace as _replace, match as _match, matches as _matches } from 'wildstar'
+import type { CharCompare } from 'wildstar'
 
 const PATH_SEP = '/'
 const STAR_STAR = '**'

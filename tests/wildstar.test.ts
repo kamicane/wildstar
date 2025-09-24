@@ -1,10 +1,10 @@
 import { test } from 'uvu'
 import * as assert from 'uvu/assert'
 
-import ws from '#wildstar'
-import iws, { icompare as compareInsensitive } from '#wildstar/insensitive'
-import path from '#wildstar/path'
-import ipath from '#wildstar/path/insensitive'
+import ws from 'wildstar'
+import iws, { icompare as compareInsensitive } from 'wildstar/insensitive'
+import path from 'wildstar/path'
+import ipath from 'wildstar/path/insensitive'
 
 test('normalize', () => {
 	assert.is(path.normalize('/'), '/')
