@@ -16,47 +16,47 @@
   "repository": "github:kamicane/wildstar",
   "type": "module",
   "imports": {
-    "#wildstar": "./src/wildstar.js",
-    "#wildstar/insensitive": "./src/wildstar-insensitive.js",
-    "#wildstar/path": "./src/path.js",
-    "#wildstar/path/insensitive": "./src/path-insensitive.js"
+    "#wildstar": "./src/wildstar.ts",
+    "#wildstar/insensitive": "./src/wildstar-insensitive.ts",
+    "#wildstar/path": "./src/path.ts",
+    "#wildstar/path/insensitive": "./src/path-insensitive.ts"
   },
   "exports": {
     ".": {
-      "default": "./src/wildstar.js",
-      "types": "./types/wildstar.d.ts"
+      "default": "./dst/wildstar.js",
+      "types": "./dst/wildstar.d.ts"
     },
     "./insensitive": {
-      "default": "./src/wildstar-insensitive.js",
-      "types": "./types/wildstar-insensitive.d.ts"
+      "default": "./dst/wildstar-insensitive.js",
+      "types": "./dst/wildstar-insensitive.d.ts"
     },
     "./path": {
-      "default": "./src/path.js",
-      "types": "./types/path.d.ts"
+      "default": "./dst/path.js",
+      "types": "./dst/path.d.ts"
     },
     "./path/insensitive": {
-      "default": "./src/path-insensitive.js",
-      "types": "./types/path-insensitive.d.ts"
+      "default": "./dst/path-insensitive.js",
+      "types": "./dst/path-insensitive.d.ts"
     }
   },
   "scripts": {
     "test": "uvu tests",
-    "build-types": "tsc",
-    "build-docs": "jsdoc -c jsdoc.json",
-    "build-api": "jsdoc2md --name-format --member-index-format grouped --module-index-format table --files ./src/wildstar.js ./src/path.js ./src/wildstar-insensitive.js ./src/path-insensitive.js > API.md",
-    "build-all": "npm run build-types && npm run build-docs && npm run build-api",
+    "build": "tsc && typedoc",
     "release": "npm version patch && git push && git push --tags && npm publish"
   },
   "engines": {
     "node": ">= 20"
   },
   "devDependencies": {
-    "docdash": "^2.0.2",
+    "@stylistic/eslint-plugin": "^5.4.0",
+    "@types/node": "^24.5.2",
     "eslint": "^9.36.0",
-    "jsdoc": "^4.0.4",
-    "jsdoc-to-markdown": "^9.1.2",
-    "neostandard": "^0.12.2",
+    "eslint-plugin-n": "^17.23.1",
+    "typedoc": "^0.28.13",
+    "typedoc-github-theme": "^0.3.1",
+    "typedoc-plugin-mdn-links": "^5.0.9",
     "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.1",
     "uvu": "^0.5.6"
   }
 }

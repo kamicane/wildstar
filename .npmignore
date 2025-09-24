@@ -3,5 +3,6 @@ docs
 tests
 .editorconfig
 eslint.config.js
-jsdoc.json
+typedoc.json
 tsconfig.json
+src

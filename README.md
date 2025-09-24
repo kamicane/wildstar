@@ -4,10 +4,9 @@ A minimal, path-aware, platform-unaware, unicode-safe pattern matching library f
 
 ## Features
 
-- Wildcard matching with `*` (zero or more) and `*+` (one or more)
-- `**` and `**+` wildcards for matching across path segments
+- Wildcard matching with `*` (zero or more characters) and `*+` (one or more characters)
+- Wildcard matching across path segments with `**` (zero or more segments) and `**+` (one or more segments)
 - Each wildcard captures results
-- Unicode-safe (works with code points, not just code units)
 - provides simple path methods like `root`, `leaf`, `parent`, `join`, and more, making it a minimal alternative to Node's `path` module for platform-unaware path manipulation.
 
 ## Installation
@@ -18,6 +17,13 @@ npm install wildstar
 
 ## Pattern Syntax
 
+### wildstar
+
+- `*` matches zero or more characters
+- `*+` matches one or more characters
+
+### wildstar/path
+
 - `*` matches zero or more characters within a single path segment (does not cross path boundaries)
 - `*+` matches one or more characters within a single path segment (does not cross path boundaries)
 - `**` matches zero or more entire path segments (crosses path boundaries)
@@ -26,48 +32,43 @@ npm install wildstar
 ## Usage
 
 ```js
-import wildstar from 'wildstar'
-import wsi from 'wildstar/insensitive' // for case insensitive comparison functions
-// or
-// import { match, matches, replace, remap } from 'wildstar'
-// and / or
-// import { match, matches, replace, remap } from 'wildstar/insensitive'
+// modules
+import ws from 'wildstar' // path-unaware matching functions
+import iws from 'wildstar/insensitive' // same as above, case insensitive version
+
+import path from 'wildstar/path' // path-aware matching functions and path utilities
+import ipath from 'wildstar/path/insensitive' // same as above, case insensitive version
 
 // Bool matching
-wildstar.matches('hello world', 'h*o w*d') // true
+ws.matches('hello world', 'h*o w*d') // true
 
-// Capture
-wildstar.match('foo bar', 'foo *') // ['bar']
+// Captures
+ws.match('foo bar', 'foo *') // ['bar']
 
 // Replace
-wildstar.replace('baz <1>', ['bar']) // 'baz bar'
+ws.replace('baz <1>', ['bar']) // 'baz bar'
 
 // Remap (match + replace)
-wildstar.remap('foo bar', 'foo *', 'baz <1>') // 'baz bar'
+ws.remap('foo bar', 'foo *', 'baz <1>') // 'baz bar'
 
 // Always greedy
-wildstar.match('aaa', '*a') // ['aa']
+ws.match('aaa', '*a') // ['aa']
 
 // Path matching
-wildstar.match('foo/bar/baz.txt', 'foo/*/*.txt') // ['bar', 'baz']
-wildstar.match('foo/bar/baz.txt', '**/*.txt') // ['foo/bar', 'baz']
-wildstar.match('foo/bar/baz.txt', 'foo/**/baz.txt') // ['bar']
-
-wildstar.match('foo/bar/baz.txt', 'foo/**') // ['bar/baz.txt']
-
-wildstar.match('foo', 'foo/**') // ['']
-wildstar.match('foo', 'foo/**+') // null
-
-wildstar.match('foo', '**/foo') // ['']
-wildstar.match('foo', '**+/foo') // null
+path.match('foo/bar/baz.txt', 'foo/*/*.txt') // ['bar', 'baz']
+path.match('foo/bar/baz.txt', 'foo/*') // null: * doesn't cross path boundaries
+path.match('foo/bar/baz.txt', 'foo/**') // ['bar/baz.txt'] ** crosses path boundaries
 
 // Path utility functions
-wildstar.normalize('foo//bar\\../baz/.\\') // 'foo/baz'
-wildstar.root('c:/foo/bar/baz.txt') // 'c:/'
-wildstar.leaf('foo/bar/baz.txt')    // 'baz.txt'
-wildstar.parent('foo/bar/baz.txt')  // 'foo/bar'
-wildstar.join('foo', 'bar', 'baz')  // 'foo/bar/baz'
-wildstar.relative('foo/bar/baz', 'foo/bar') // 'baz'
+path.normalize('foo//bar\\../baz/.\\') // 'foo/baz'
+path.root('c:/foo/bar/baz.txt') // 'c:'
+path.leaf('foo/bar/baz.txt')    // 'baz.txt'
+path.parent('foo/bar/baz.txt')  // 'foo/bar'
+path.join('foo', 'bar', 'baz')  // 'foo/bar/baz'
+path.relative('foo/bar', 'foo/bar/baz') // 'baz'
+
+// fun
+const ext = path.match('foo/bar/baz.tar.gz', '**/*.*')?.[2] // tar.gz
 ```
 
 ### Notes
@@ -87,9 +88,7 @@ A platform-unaware path implementation treats all paths the same way, no matter 
 
 ## API
 
-**Note:** You can import `wildstar` and `wildstar/insensitive`. Both export the same API, but `/insensitive` versions perform all operations case-insensitively.
-
-See [API docs](API.md) for full documentation, or [read online](https://kamicane.github.io/wildstar/).
+See [API docs](https://kamicane.github.io/wildstar) for full documentation
 
 ## License
 

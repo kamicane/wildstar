@@ -1,0 +1,24 @@
+{
+  "plugin": [
+    "typedoc-github-theme",
+    "typedoc-plugin-mdn-links",
+  ],
+  "entryPoints": [
+    "src/*.ts"
+  ],
+  "navigation": {
+    "includeCategories": false,
+    "includeGroups": false,
+    "includeFolders": false,
+    "compactFolders": true,
+    "excludeReferences": false
+  },
+  "excludeInternal": true,
+  "theme": "typedoc-github-theme",
+  "outputs": [
+    {
+      "name": "html",
+      "path": "./docs"
+    }
+  ]
+}

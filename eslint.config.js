@@ -1,20 +1,36 @@
-import neostandard, { plugins } from 'neostandard'
+import stylistic from '@stylistic/eslint-plugin'
+import tseslint from 'typescript-eslint'
+import n from 'eslint-plugin-n'
 
 export default [
-	...neostandard(/* { ts: true } */),
-	plugins.n.configs['flat/recommended-module'],
-	// ...plugins['typescript-eslint'].configs.recommended,
+	{
+		ignores: [
+			'**/dst/**',
+			'**/node_modules/**'
+		]
+	},
+	n.configs['flat/recommended-module'],
+	...tseslint.configs.strict,
+	...tseslint.configs.stylistic,
+	stylistic.configs.recommended,
 	{
 		languageOptions: {
 			ecmaVersion: 'latest'
 		},
 		rules: {
 			'curly': 'off',
-			'no-unused-vars': ['warn', { caughtErrors: 'none', args: 'after-used', destructuredArrayIgnorePattern: '^_' }],
-			'n/no-unpublished-import': ['error', { allowModules: ['neostandard', 'uvu'] }],
+			'no-unused-vars': ['off'],
+			'n/no-unpublished-import': ['error', { allowModules: ['uvu', 'tsdoc-markdown'] }],
 			'n/prefer-node-protocol': ['error'],
 			'n/hashbang': 'off',
 			'object-shorthand': 'off',
+
+			'@typescript-eslint/no-unused-vars': ['error'],
+
+			'@stylistic/indent-binary-ops': ['error', 'tab'],
+			'@stylistic/brace-style': ['error', '1tbs'],
+			'@stylistic/operator-linebreak': ['error', 'after'],
+			'@stylistic/space-before-function-paren': ['error', 'always'],
 			'@stylistic/max-len': ['warn', { code: 120, tabWidth: 2, ignoreComments: true }],
 			'@stylistic/indent': ['error', 'tab'],
 			'@stylistic/arrow-parens': ['error', 'always'],

@@ -1,9 +1,18 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "declaration": true,
-    "allowJs": true,
-    "emitDeclarationOnly": true,
-    "outDir": "types"
+    "outDir": "dst",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src"

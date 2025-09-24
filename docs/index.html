@@ -1,133 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <meta charset="utf-8">
-    <title>Home - Documentation</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <script src="scripts/nav.js" defer></script>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav >
-    
-    <input type="text" id="nav-search" placeholder="Search" />
-    
-    
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-wildstar.html">wildstar</a><ul class='methods'><li data-type='method'><a href="module-wildstar.html#.join">join</a></li><li data-type='method'><a href="module-wildstar.html#.leaf">leaf</a></li><li data-type='method'><a href="module-wildstar.html#.match">match</a></li><li data-type='method'><a href="module-wildstar.html#.matches">matches</a></li><li data-type='method'><a href="module-wildstar.html#.normalize">normalize</a></li><li data-type='method'><a href="module-wildstar.html#.parent">parent</a></li><li data-type='method'><a href="module-wildstar.html#.relative">relative</a></li><li data-type='method'><a href="module-wildstar.html#.remap">remap</a></li><li data-type='method'><a href="module-wildstar.html#.replace">replace</a></li><li data-type='method'><a href="module-wildstar.html#.root">root</a></li></ul></li><li><a href="module-wildstar_insensitive.html">wildstar/insensitive</a><ul class='methods'><li data-type='method'><a href="module-wildstar_insensitive.html#.compareInsensitive">compareInsensitive</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.match">match</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.matches">matches</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.relative">relative</a></li><li data-type='method'><a href="module-wildstar_insensitive.html#.remap">remap</a></li></ul></li></ul>
-    
-</nav>
-
-<div id="main">
-    
-
-    
-
-
-
-    
-
-
-    <section class="package">
-        <h3> </h3>		
-    </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><h1>💫 wildstar</h1>
-<p>A minimal, path-aware, platform-unaware, unicode-safe pattern matching library for node.js. Supports captures and replacements.</p>
-<h2>Features</h2>
-<ul>
-<li>Wildcard matching with <code>*</code> (zero or more) and <code>*+</code> (one or more)</li>
-<li><code>**</code> and <code>**+</code> wildcards for matching across path segments</li>
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>wildstar</title><meta name="description" content="Documentation for wildstar"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><link rel="stylesheet" href="assets/typedoc-github-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">wildstar</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>wildstar</h1></div><div class="tsd-panel tsd-typography"><h1 id="💫-wildstar" class="tsd-anchor-link">💫 wildstar<a href="#💫-wildstar" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>A minimal, path-aware, platform-unaware, unicode-safe pattern matching library for node.js. Supports captures and replacements.</p>
+<h2 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Wildcard matching with <code>*</code> (zero or more characters) and <code>*+</code> (one or more characters)</li>
+<li>Wildcard matching across path segments with <code>**</code> (zero or more segments) and <code>**+</code> (one or more segments)</li>
 <li>Each wildcard captures results</li>
-<li>Unicode-safe (works with code points, not just code units)</li>
 <li>provides simple path methods like <code>root</code>, <code>leaf</code>, <code>parent</code>, <code>join</code>, and more, making it a minimal alternative to Node's <code>path</code> module for platform-unaware path manipulation.</li>
 </ul>
-<h2>Installation</h2>
-<pre class="prettyprint source lang-sh"><code>npm install wildstar
-</code></pre>
-<h2>Pattern Syntax</h2>
-<ul>
+<h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="sh"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">wildstar</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="pattern-syntax" class="tsd-anchor-link">Pattern Syntax<a href="#pattern-syntax" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="wildstar" class="tsd-anchor-link">wildstar<a href="#wildstar" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><code>*</code> matches zero or more characters</li>
+<li><code>*+</code> matches one or more characters</li>
+</ul>
+<h3 id="wildstarpath" class="tsd-anchor-link">wildstar/path<a href="#wildstarpath" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
 <li><code>*</code> matches zero or more characters within a single path segment (does not cross path boundaries)</li>
 <li><code>*+</code> matches one or more characters within a single path segment (does not cross path boundaries)</li>
 <li><code>**</code> matches zero or more entire path segments (crosses path boundaries)</li>
 <li><code>**+</code> matches one or more entire path segments (crosses path boundaries)</li>
 </ul>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>import wildstar from 'wildstar'
-import wsi from 'wildstar/insensitive' // for case insensitive comparison functions
-// or
-// import { match, matches, replace, remap } from 'wildstar'
-// and / or
-// import { match, matches, replace, remap } from 'wildstar/insensitive'
+<h2 id="usage" class="tsd-anchor-link">Usage<a href="#usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="js"><span class="hl-3">// modules</span><br/><span class="hl-4">import</span><span class="hl-1"> </span><span class="hl-5">ws</span><span class="hl-1"> </span><span class="hl-4">from</span><span class="hl-1"> </span><span class="hl-2">&#39;wildstar&#39;</span><span class="hl-1"> </span><span class="hl-3">// path-unaware matching functions</span><br/><span class="hl-4">import</span><span class="hl-1"> </span><span class="hl-5">iws</span><span class="hl-1"> </span><span class="hl-4">from</span><span class="hl-1"> </span><span class="hl-2">&#39;wildstar/insensitive&#39;</span><span class="hl-1"> </span><span class="hl-3">// same as above, case insensitive version</span><br/><br/><span class="hl-4">import</span><span class="hl-1"> </span><span class="hl-5">path</span><span class="hl-1"> </span><span class="hl-4">from</span><span class="hl-1"> </span><span class="hl-2">&#39;wildstar/path&#39;</span><span class="hl-1"> </span><span class="hl-3">// path-aware matching functions and path utilities</span><br/><span class="hl-4">import</span><span class="hl-1"> </span><span class="hl-5">ipath</span><span class="hl-1"> </span><span class="hl-4">from</span><span class="hl-1"> </span><span class="hl-2">&#39;wildstar/path/insensitive&#39;</span><span class="hl-1"> </span><span class="hl-3">// same as above, case insensitive version</span><br/><br/><span class="hl-3">// Bool matching</span><br/><span class="hl-5">ws</span><span class="hl-1">.</span><span class="hl-0">matches</span><span class="hl-1">(</span><span class="hl-2">&#39;hello world&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;h*o w*d&#39;</span><span class="hl-1">) </span><span class="hl-3">// true</span><br/><br/><span class="hl-3">// Captures</span><br/><span class="hl-5">ws</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-2">&#39;foo bar&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;foo *&#39;</span><span class="hl-1">) </span><span class="hl-3">// [&#39;bar&#39;]</span><br/><br/><span class="hl-3">// Replace</span><br/><span class="hl-5">ws</span><span class="hl-1">.</span><span class="hl-0">replace</span><span class="hl-1">(</span><span class="hl-2">&#39;baz &lt;1&gt;&#39;</span><span class="hl-1">, [</span><span class="hl-2">&#39;bar&#39;</span><span class="hl-1">]) </span><span class="hl-3">// &#39;baz bar&#39;</span><br/><br/><span class="hl-3">// Remap (match + replace)</span><br/><span class="hl-5">ws</span><span class="hl-1">.</span><span class="hl-0">remap</span><span class="hl-1">(</span><span class="hl-2">&#39;foo bar&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;foo *&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;baz &lt;1&gt;&#39;</span><span class="hl-1">) </span><span class="hl-3">// &#39;baz bar&#39;</span><br/><br/><span class="hl-3">// Always greedy</span><br/><span class="hl-5">ws</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-2">&#39;aaa&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;*a&#39;</span><span class="hl-1">) </span><span class="hl-3">// [&#39;aa&#39;]</span><br/><br/><span class="hl-3">// Path matching</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar/baz.txt&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;foo/*/*.txt&#39;</span><span class="hl-1">) </span><span class="hl-3">// [&#39;bar&#39;, &#39;baz&#39;]</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar/baz.txt&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;foo/*&#39;</span><span class="hl-1">) </span><span class="hl-3">// null: * doesn&#39;t cross path boundaries</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar/baz.txt&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;foo/**&#39;</span><span class="hl-1">) </span><span class="hl-3">// [&#39;bar/baz.txt&#39;] ** crosses path boundaries</span><br/><br/><span class="hl-3">// Path utility functions</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">normalize</span><span class="hl-1">(</span><span class="hl-2">&#39;foo//bar</span><span class="hl-6">\\</span><span class="hl-2">../baz/.</span><span class="hl-6">\\</span><span class="hl-2">&#39;</span><span class="hl-1">) </span><span class="hl-3">// &#39;foo/baz&#39;</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">root</span><span class="hl-1">(</span><span class="hl-2">&#39;c:/foo/bar/baz.txt&#39;</span><span class="hl-1">) </span><span class="hl-3">// &#39;c:&#39;</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">leaf</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar/baz.txt&#39;</span><span class="hl-1">)    </span><span class="hl-3">// &#39;baz.txt&#39;</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">parent</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar/baz.txt&#39;</span><span class="hl-1">)  </span><span class="hl-3">// &#39;foo/bar&#39;</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">join</span><span class="hl-1">(</span><span class="hl-2">&#39;foo&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;bar&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;baz&#39;</span><span class="hl-1">)  </span><span class="hl-3">// &#39;foo/bar/baz&#39;</span><br/><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">relative</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;foo/bar/baz&#39;</span><span class="hl-1">) </span><span class="hl-3">// &#39;baz&#39;</span><br/><br/><span class="hl-3">// fun</span><br/><span class="hl-7">const</span><span class="hl-1"> </span><span class="hl-8">ext</span><span class="hl-1"> = </span><span class="hl-5">path</span><span class="hl-1">.</span><span class="hl-0">match</span><span class="hl-1">(</span><span class="hl-2">&#39;foo/bar/baz.tar.gz&#39;</span><span class="hl-1">, </span><span class="hl-2">&#39;**/*.*&#39;</span><span class="hl-1">)?.[</span><span class="hl-9">2</span><span class="hl-1">] </span><span class="hl-3">// tar.gz</span>
+</code><button type="button">Copy</button></pre>
 
-// Bool matching
-wildstar.matches('hello world', 'h*o w*d') // true
-
-// Capture
-wildstar.match('foo bar', 'foo *') // ['bar']
-
-// Replace
-wildstar.replace('baz &lt;1>', ['bar']) // 'baz bar'
-
-// Remap (match + replace)
-wildstar.remap('foo bar', 'foo *', 'baz &lt;1>') // 'baz bar'
-
-// Always greedy
-wildstar.match('aaa', '*a') // ['aa']
-
-// Path matching
-wildstar.match('foo/bar/baz.txt', 'foo/*/*.txt') // ['bar', 'baz']
-wildstar.match('foo/bar/baz.txt', '**/*.txt') // ['foo/bar', 'baz']
-wildstar.match('foo/bar/baz.txt', 'foo/**/baz.txt') // ['bar']
-
-wildstar.match('foo/bar/baz.txt', 'foo/**') // ['bar/baz.txt']
-
-wildstar.match('foo', 'foo/**') // ['']
-wildstar.match('foo', 'foo/**+') // null
-
-wildstar.match('foo', '**/foo') // ['']
-wildstar.match('foo', '**+/foo') // null
-
-// Path utility functions
-wildstar.normalize('foo//bar\\../baz/.\\') // 'foo/baz'
-wildstar.root('c:/foo/bar/baz.txt') // 'c:/'
-wildstar.leaf('foo/bar/baz.txt')    // 'baz.txt'
-wildstar.parent('foo/bar/baz.txt')  // 'foo/bar'
-wildstar.join('foo', 'bar', 'baz')  // 'foo/bar/baz'
-wildstar.relative('foo/bar/baz', 'foo/bar') // 'baz'
-</code></pre>
-<h3>Notes</h3>
-<ul>
+<h3 id="notes" class="tsd-anchor-link">Notes<a href="#notes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
 <li>Each <code>*</code>, <code>**</code>, <code>*+</code> and <code>**+</code> will fill a capture slot, even if empty</li>
 <li>Wildstar does not consider trailing slashes</li>
 <li>Subpath captures and path methods always return <code>/</code> as separator</li>
@@ -137,37 +31,7 @@ wildstar.relative('foo/bar/baz', 'foo/bar') // 'baz'
 <li><code>**</code> and <code>**+</code> are only considered when a full path segment is exactly <code>**</code> or <code>**+</code></li>
 <li>Matches are greedy: each wildcard will match as much as possible while still allowing the overall pattern to match</li>
 </ul>
-<h2>Why platform unaware</h2>
-<p>A platform-unaware path implementation treats all paths the same way, no matter the operating system. This makes it easy to use paths for other purposes other than file system usage.</p>
-<h2>API</h2>
-<p><strong>Note:</strong> You can import <code>wildstar</code> and <code>wildstar/insensitive</code>. Both export the same API, but <code>/insensitive</code> versions perform all operations case-insensitively.</p>
-<p>See <a href="API.md">API docs</a> for full documentation, or <a href="https://kamicane.github.io/wildstar/">read online</a>.</p>
-<h2>License</h2>
-<p>MIT</p></article>
-    </section>
-
-
-
-
-
-
-    
-    
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/polyfill.js"></script>
-<script src="scripts/linenumber.js"></script>
-
-<script src="scripts/search.js" defer></script>
-
-
-
-</body>
-</html>
+<h2 id="why-platform-unaware" class="tsd-anchor-link">Why platform unaware<a href="#why-platform-unaware" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>A platform-unaware path implementation treats all paths the same way, no matter the operating system. This makes it easy to use paths for other purposes other than file system usage.</p>
+<h2 id="api" class="tsd-anchor-link">API<a href="#api" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>See <a href="https://kamicane.github.io/wildstar">API docs</a> for full documentation</p>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>MIT</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#💫-wildstar"><span>💫 wildstar</span></a><ul><li><a href="#features"><span>Features</span></a></li><li><a href="#installation"><span>Installation</span></a></li><li><a href="#pattern-syntax"><span>Pattern <wbr/>Syntax</span></a></li><li><ul><li><a href="#wildstar"><span>wildstar</span></a></li><li><a href="#wildstarpath"><span>wildstar/path</span></a></li></ul></li><li><a href="#usage"><span>Usage</span></a></li><li><ul><li><a href="#notes"><span>Notes</span></a></li></ul></li><li><a href="#why-platform-unaware"><span>Why platform unaware</span></a></li><li><a href="#api"><span>API</span></a></li><li><a href="#license"><span>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">wildstar</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a> with <a href="https://github.com/JulianWowra/typedoc-github-theme" target="_blank">typedoc-github-theme</a></p></footer><div class="overlay"></div></body></html>
