@@ -14,11 +14,11 @@ import {
 	leaf,
 	replace,
 	relative as _relative
-} from 'wildstar/path'
+} from '#wildstar/path'
 
-import { icompare } from 'wildstar/insensitive'
+import { icompare } from '#wildstar/insensitive'
 
-export { normalize, join, root, parent, leaf, replace } from 'wildstar/path'
+export { normalize, join, root, parent, leaf, replace } from '#wildstar/path'
 
 /**
  * Match a path against a pattern with wildcards and capture results (case-insensitive)

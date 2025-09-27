@@ -15,6 +15,12 @@
   "homepage": "https://kamicane.github.io/wildstar",
   "repository": "github:kamicane/wildstar",
   "type": "module",
+  "imports": {
+    "#wildstar": "./dst/wildstar.js",
+    "#wildstar/insensitive": "./dst/wildstar-insensitive.js",
+    "#wildstar/path": "./dst/path.js",
+    "#wildstar/path/insensitive": "./dst/path-insensitive.js"
+  },
   "exports": {
     ".": {
       "import": "./dst/wildstar.js",
@@ -35,8 +41,10 @@
   },
   "scripts": {
     "test": "uvu tests",
-    "build": "tsc && typedoc",
-    "release": "npm version patch && git push && git push --tags && npm publish"
+    "build": "rm -rf dst && tsc && rm -rf docs && typedoc",
+    "localize-imports": "node ./tools/update-imports.ts src",
+    "globalize-imports": "node ./tools/update-imports.ts dst",
+    "release": "npm run build && npm run globalize-imports && npm test && npm version patch && git push && git push --tags && npm publish && npm run localize-imports"
   },
   "engines": {
     "node": ">= 20"

@@ -8,10 +8,10 @@ import {
 	matches as _matches,
 	remap as _remap,
 	replace
-} from 'wildstar'
+} from '#wildstar'
 
 /** {@inheritDoc replace} */
-export { replace } from 'wildstar'
+export { replace } from '#wildstar'
 
 /**
  * Compares two Unicode code points for case-insensitive equality (locale-unaware)

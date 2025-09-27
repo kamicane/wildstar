@@ -1,6 +1,7 @@
 _*
 docs
 tests
+tools
 .editorconfig
 eslint.config.js
 typedoc.json
