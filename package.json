@@ -16,10 +16,10 @@
   "repository": "github:kamicane/wildstar",
   "type": "module",
   "imports": {
-    "#wildstar": "./dst/wildstar.js",
-    "#wildstar/insensitive": "./dst/wildstar-insensitive.js",
-    "#wildstar/path": "./dst/path.js",
-    "#wildstar/path/insensitive": "./dst/path-insensitive.js"
+    "#wildstar": "./src/wildstar.ts",
+    "#wildstar/insensitive": "./src/wildstar-insensitive.ts",
+    "#wildstar/path": "./src/path.ts",
+    "#wildstar/path/insensitive": "./src/path-insensitive.ts"
   },
   "exports": {
     ".": {
@@ -41,10 +41,11 @@
   },
   "scripts": {
     "test": "uvu tests",
+    "localize-imports": "node ./tools/update-imports.ts src && rm -rf dst",
+    "globalize-imports": "rm -rf dst && tsc && node ./tools/update-imports.ts dst",
+    "test-release": "npm run globalize-imports && uvu tests && npm run localize-imports",
     "build": "rm -rf dst && tsc && rm -rf docs && typedoc",
-    "localize-imports": "node ./tools/update-imports.ts src",
-    "globalize-imports": "node ./tools/update-imports.ts dst",
-    "release": "npm run build && npm run globalize-imports && npm test && npm version patch && git push && git push --tags && npm publish && npm run localize-imports"
+    "release": "npm run test-release && npm version patch && git push && git push --tags && npm run globalize-imports && npm publish && npm run localize-imports"
   },
   "engines": {
     "node": ">= 20"
