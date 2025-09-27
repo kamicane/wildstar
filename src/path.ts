@@ -5,8 +5,8 @@
 
 import os from 'node:os'
 
-import { replace as _replace, match as _match, matches as _matches } from 'wildstar'
-import type { CharCompare } from 'wildstar'
+import { replace as _replace, match as _match, matches as _matches } from '#wildstar'
+import type { CharCompare } from '#wildstar'
 
 const PATH_SEP = '/'
 const STAR_STAR = '**'
@@ -44,11 +44,6 @@ function absolute (parts: string[]): string | null {
  * @param part - The part to append
  */
 function appendPart (parts: string[], part: string): void {
-	if (parts.length === 0 && part.length === 0) {
-		parts.push(part)
-		return
-	}
-
 	if (part === '.' || part.length === 0) return
 	if (part === '..') {
 		if (parts.length > 1) {
@@ -75,20 +70,27 @@ function appendPart (parts: string[], part: string): void {
  * @param source - The path string to convert
  * @returns Array of normalized path parts
  */
-function toParts (source: string): string[] {
+function split (source: string): string[] {
 	if (source.length === 0) return []
 
-	const segments: string[] = []
+	const parts: string[] = []
 	if (source.startsWith('~')) source = source.replace(/^~/, HOMEDIR)
 	let start = 0
+	let index = 0
 	for (let i = 0; i <= source.length; ++i) {
 		const c = source[i]
 		if (c === '/' || c === '\\' || i === source.length) {
-			appendPart(segments, source.slice(start, i))
+			const part = source.slice(start, i)
+			if (part.length === 0) {
+				if (index === 0) parts.push(part)
+			} else {
+				appendPart(parts, part)
+			}
 			start = i + 1
+			index++
 		}
 	}
-	return segments
+	return parts
 }
 
 /**
@@ -114,7 +116,7 @@ function stringify (parts: string[]): string {
  * normalize('~\\foo/') // returns 'c:/Users/kamicane/foo'
  * */
 export function normalize (source: string): string {
-	return stringify(toParts(source))
+	return stringify(split(source))
 }
 
 /**
@@ -183,7 +185,7 @@ function matchPartsInternal (
  * */
 export function match (source: string, pattern: string, charCompare?: CharCompare): string[] | null {
 	const captures: string[] = []
-	const matched = matchPartsInternal(toParts(source), toParts(pattern), charCompare, captures)
+	const matched = matchPartsInternal(split(source), split(pattern), charCompare, captures)
 	return matched ? captures : null
 }
 
@@ -197,7 +199,7 @@ export function match (source: string, pattern: string, charCompare?: CharCompar
  * matches('hello/dear/world', 'hello/**+/world') // returns true
  * */
 export function matches (source: string, pattern: string, charCompare?: CharCompare): boolean {
-	return matchPartsInternal(toParts(source), toParts(pattern), charCompare)
+	return matchPartsInternal(split(source), split(pattern), charCompare)
 }
 
 /**
@@ -241,7 +243,7 @@ export function remap (source: string, pattern: string, replacement: string, cha
  * parent('c:/') // returns 'c:'
  * */
 export function parent (path: string): string {
-	const parts = toParts(path)
+	const parts = split(path)
 	if (parts.length === 1) {
 		const abs = absolute(parts)
 		if (abs) return abs
@@ -259,7 +261,7 @@ export function parent (path: string): string {
  * root('/foo/bar') // returns '/'
  * */
 export function root (source: string): string {
-	const parts = toParts(source)
+	const parts = split(source)
 	if (parts.length > 0) {
 		const abs = absolute(parts)
 		if (abs) return abs
@@ -276,7 +278,7 @@ export function root (source: string): string {
  * leaf('c:/') // returns ''
  * */
 export function leaf (path: string): string {
-	const parts = toParts(path)
+	const parts = split(path)
 	if (parts.length === 1) {
 		const abs = absolute(parts)
 		if (abs) return ''
@@ -296,7 +298,7 @@ export function join (...paths: string[]): string {
 	let baseParts: string[] = []
 
 	for (const path of paths) {
-		const subParts = toParts(path)
+		const subParts = split(path)
 
 		if (absolute(subParts)) {
 			baseParts = subParts
@@ -324,8 +326,8 @@ export function join (...paths: string[]): string {
  * relative('baz', 'foo/bar') // returns null
  */
 export function relative (base: string, target: string, charCompare?: CharCompare): string | null {
-	const baseParts = toParts(base)
-	const sourceParts = toParts(target)
+	const baseParts = split(base)
+	const sourceParts = split(target)
 
 	let common = 0
 	while (

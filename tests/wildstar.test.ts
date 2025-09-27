@@ -1,14 +1,22 @@
 import { test } from 'uvu'
 import * as assert from 'uvu/assert'
 
-import ws from 'wildstar'
-import iws, { icompare as compareInsensitive } from 'wildstar/insensitive'
-import path from 'wildstar/path'
-import ipath from 'wildstar/path/insensitive'
+import ws from '#wildstar'
+import iws, { icompare as compareInsensitive } from '#wildstar/insensitive'
+import path from '#wildstar/path'
+import ipath from '#wildstar/path/insensitive'
+
+test('join', () => {
+	assert.is(path.join('c:\\foo\\bar\\', './//baz.txt'), 'c:/foo/bar/baz.txt')
+	assert.is(path.join('c:\\foo\\bar', '.\\\\baz.txt'), 'c:/foo/bar/baz.txt')
+})
 
 test('normalize', () => {
 	assert.is(path.normalize('/'), '/')
 	assert.is(path.normalize('c:/'), 'c:')
+
+	assert.is(path.normalize('./dir'), 'dir')
+	assert.is(path.normalize('.\\dir'), 'dir')
 
 	assert.is(path.normalize('foo/bar'), 'foo/bar')
 	assert.is(path.normalize('foo//bar'), 'foo/bar')
